@@ -1,12 +1,17 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 import time
+from selenium.webdriver.chrome.service import Service
 
 def get_seller(url):
     # Initialize the WebDriver
     options=webdriver.ChromeOptions()
     options.add_argument('--headless')
-    driver = webdriver.Chrome(options=options)  # Or specify the path to your webdriver
+    chrome_driver_path = '/usr/bin/chromedriver'
+    service = Service(chrome_driver_path)
+
+    # Initialize WebDriver
+    driver = webdriver.Chrome(service=service, options=options) # Or specify the path to your webdriver
     # Load the webpage
     driver.get(url)
     time.sleep(2)
