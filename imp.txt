@@ -1,0 +1,15 @@
+First Run Example:
+Product title| price| rating| highest rating| number of rating| highest number of rating
+Ball | 2 | 4.5 | 4.5 | 19 | 19
+Pen | 22 | 4.5 | 4.5 | 19 | 19
+
+Next Run Example:
+Product title| price| rating| highest rating| number of rating| highest number of rating | sellers | Lowest Price
+Ball | 2 | 4.4 | 4.5 | 20 | 20
+Pen | 22 | 3.5 | 4.5 | 10 | 19
+
+In first run, ball's current rating is 4.5 and highest rating will be same 4.5 as we didnt run the code before
+
+In second run balls current rating is 4.4 and highest rating will remain 4.5(Just compare value and retain which ever is highest)
+
+In third run balls current rating could be 4.7 and highest rating will change to 4.7(Just compare value and retain which ever is highest)
