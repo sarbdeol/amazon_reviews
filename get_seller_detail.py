@@ -57,4 +57,4 @@ def get_seller(url):
     #     print(seller_detail)
 
 
-get_seller('https://amazon.com/gp/offer-listing/B0CTX46384/ref=aod_pop_null_new_olp_sr?ie=UTF8&condition=new_olp')
+# get_seller('https://amazon.com/gp/offer-listing/B0CTX46384/ref=aod_pop_null_new_olp_sr?ie=UTF8&condition=new_olp')
