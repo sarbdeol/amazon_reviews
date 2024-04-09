@@ -54,3 +54,6 @@ def get_seller(url):
     # for idx, seller_detail in enumerate(all_seller_details, start=1):
     #     print(f"Seller {idx}:")
     #     print(seller_detail)
+
+
+get_seller('https://amazon.com/gp/offer-listing/B0CTX46384/ref=aod_pop_null_new_olp_sr?ie=UTF8&condition=new_olp')
