@@ -34,7 +34,10 @@ def get_seller(url):
         for offer_element in offer_elements:
             # Extract seller details
             seller_name = offer_element.find_element(By.XPATH, './/div/a[@class="a-size-small a-link-normal"]').text
-            seller_ratings = offer_element.find_element(By.ID, 'seller-rating-count-{iter}').text.split('ratings')[0].replace('(','').strip()
+            try:
+                seller_ratings = offer_element.find_element(By.ID, 'seller-rating-count-{iter}').text.split('ratings')[0].replace('(','').strip()
+            except:
+                seller_ratings=''
             seller_price = offer_element.find_element(By.XPATH, './/*[@class="a-price aok-align-center centralizedApexPricePriceToPayMargin"]').text.replace('\n','.')
             ship_from = offer_element.find_element(By.XPATH, './/span[@class="a-size-small a-color-base"]').text
             shipping_price=offer_element.find_element(By.XPATH, './/div[@id="mir-layout-DELIVERY_BLOCK-slot-PRIMARY_DELIVERY_MESSAGE_LARGE"]/span').get_attribute('data-csa-c-delivery-price')
