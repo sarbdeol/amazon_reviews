@@ -160,9 +160,9 @@ def scrape_and_process_data(response,data_from_csv,asin):
         # Read CSV file and store data
         
         try:
-            update_highest_number_rating(data_from_csv, asin, CustomerReview)      
+            update_highest_number_rating(data_from_csv, asin, data['Number of Rating'])      
         except:
-            data['Highest Number of Rating']=CustomerReview
+            data['Highest Number of Rating']=data['Number of Rating']
         try:
             rating_element = soup.find('span', class_='reviewCountTextLinkedHistogram')
             StarRating = rating_element['title'].split('out')[0]
@@ -172,9 +172,9 @@ def scrape_and_process_data(response,data_from_csv,asin):
             data['Rating']=''
   
         try:
-            update_highest_rating(data_from_csv, asin, StarRating)      
+            update_highest_rating(data_from_csv, asin, data['Rating'])      
         except:
-            data['Highest Rating']=StarRating
+            data['Highest Rating']=data['Rating']
         try:
             seller_link = soup.find('span', {'data-action': 'show-all-offers-display'}).find('a')['href']
             print(seller_link)
