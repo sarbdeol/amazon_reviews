@@ -19,11 +19,22 @@ def add_data_to_csv(data):
         today_date = datetime.now().strftime('%Y%m%d')
         output_file_path = f'output_{today_date}.csv'
         # output_file_path = 'output.csv'
-        fieldnames = ['Asin', 'Name', 'Number of Rating', 'Highest Number of Rating', 'Rating','Highest Rating', 'seller', 'Lowsest Price Among all seller', 'BSR', 'ProductUrl']
+        fieldnames = ['No','Asin', 'Name', 'Number of Rating', 'Highest Number of Rating', 'Rating','Highest Rating', 'seller', 'Lowsest Price Among all seller', 'BSR', 'ProductUrl']
         
         # Check if the output file exists
         file_exists = os.path.exists(output_file_path)
+        # Determine the next serial number
+        next_serial = 1
+        if os.path.exists(output_file_path):
+            with open(output_file_path, 'r', newline='') as csvfile:
+                reader = csv.DictReader(csvfile)
+                rows = list(reader)
+                if rows:
+                    last_row = rows[-1]
+                    next_serial = int(last_row['No']) + 1
         
+        # Append the next serial number to the data dictionary
+        data['No'] = next_serial
         # Open the CSV file in append mode, create a new one if it doesn't exist
         with open(output_file_path, 'a', newline='') as csvfile:
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
