@@ -14,6 +14,7 @@ from get_seller_detail import get_seller
 from datetime import datetime,timedelta
 
 def add_data_to_csv(data):
+    # print(data)
     try:
         today_date = datetime.now().strftime('%Y%m%d')
         output_file_path = f'output_{today_date}.csv'
@@ -120,20 +121,21 @@ def scrape_amazon(url):
         except:
             data={}
         asin = extract_asin_from_url(url)
+        # print(data)
         if asin in data:
             print(f'{asin} found in csv')
-            existing_data = data[asin]
-            print('existing_data', existing_data)
+            existing_data = data
+            # print('existing_data', existing_data)
             # Update data with scraped information
             new_data = scrape_and_process_data(response,existing_data,asin)
-            print('new data', new_data)
+            # print('new data', new_data)
             existing_data.update(new_data)
             data = existing_data
-            print(data)
-            add_data_to_csv(data)
+            # print(data)
+            add_data_to_csv(data[asin])
         else:
             result = scrape_and_process_data(response,None,asin)
-            print(result)
+            # print(result)
             add_data_to_csv(result)
             
 def scrape_and_process_data(response,data_from_csv,asin):
